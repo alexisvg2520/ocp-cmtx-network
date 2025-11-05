@@ -1,0 +1,5 @@
+apiVersion: v2
+name: cmtx-network
+version: 0.1.0
+description: NetworkPolicies para cmtx
+type: application

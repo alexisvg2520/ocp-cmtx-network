@@ -1,0 +1,13 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: cmtx-np-frontend-to-api
+  namespace: {{ .Values.namespace }}
+spec:
+  podSelector:
+    matchLabels: { app.kubernetes.io/name: {{ .Values.labels.api }} }
+  policyTypes: [Ingress]
+  ingress:
+  - from:
+    - podSelector: { matchLabels: { app.kubernetes.io/name: {{ .Values.labels.frontend }} } }
+    ports: [ { protocol: TCP, port: {{ .Values.ports.http }} } ]

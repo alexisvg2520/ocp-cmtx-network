@@ -1,0 +1,9 @@
+namespace: ecuaalejo2013-dev
+labels:
+  frontend: cmtx-web-frontend
+  api:      cmtx-api-public
+  data:     cmtx-api-data
+  mongo:    cmtx-mongo
+ports:
+  http: 8080
+  mongo: 27017
