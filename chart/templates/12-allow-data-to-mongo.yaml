@@ -11,3 +11,4 @@ spec:
   - from:
     - podSelector: { matchLabels: { app.kubernetes.io/name: {{ .Values.labels.data }} } }
     ports: [ { protocol: TCP, port: {{ .Values.ports.mongo }} } ]
+    
