@@ -28,5 +28,11 @@ jobs:
           openshift_token:      ${{ secrets.OPENSHIFT_TOKEN }}
           insecure_skip_tls_verify: true
           namespace: ecuaalejo2013-dev
+      - name: Verificar chart y lint
+        run: |
+          pwd
+          ls -la
+          test -f chart/Chart.yaml || (echo "NO existe ./chart/Chart.yaml" && exit 1)
+          helm lint ./chart
       - name: Helm upgrade
         run: helm upgrade --install cmtx-network ./chart
