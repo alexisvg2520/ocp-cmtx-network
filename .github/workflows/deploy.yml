@@ -1,5 +1,8 @@
 name: deploy-network
-on: { push: { branches: [ main ] } }
+on: 
+  push:
+    branches: ["master"]
+  workflow_dispatch:
 jobs:
   deploy:
     runs-on: ubuntu-latest
