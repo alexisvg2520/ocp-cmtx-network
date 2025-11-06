@@ -5,7 +5,7 @@ on:
     paths:
       - 'chart/**'
       - '.github/workflows/deploy.yaml'
-  workflow_dispatch:
+  workflow_dispatch: {}
 jobs:
   deploy:
     runs-on: ubuntu-latest
