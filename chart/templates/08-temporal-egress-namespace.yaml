@@ -1,0 +1,15 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: cmtx-np-temporal-egress-namespace
+  namespace: ecuaalejo2013-dev
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: cmtx-web-frontend
+  policyTypes: [Egress]
+  egress:
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: ecuaalejo2013-dev
