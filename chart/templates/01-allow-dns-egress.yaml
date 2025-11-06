@@ -2,11 +2,15 @@ apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: cmtx-np-allow-dns-egress
-  namespace: {{ .Values.namespace }}
+  namespace: ecuaalejo2013-dev
 spec:
   podSelector: {}
   policyTypes: [Egress]
   egress:
-  - ports:
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: openshift-dns
+    ports:
     - { protocol: UDP, port: 53 }
     - { protocol: TCP, port: 53 }
