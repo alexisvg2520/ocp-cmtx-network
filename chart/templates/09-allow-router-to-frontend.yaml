@@ -10,7 +10,6 @@ spec:
   policyTypes: [Ingress]
   ingress:
   - from:
-    # Permite tráfico desde los pods del router (openshift-ingress)
     - namespaceSelector:
         matchLabels:
           network.openshift.io/policy-group: ingress

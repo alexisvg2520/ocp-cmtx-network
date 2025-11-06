@@ -4,13 +4,13 @@ metadata:
   name: cmtx-np-allow-dns-egress
   namespace: ecuaalejo2013-dev
 spec:
-  podSelector: {}                # aplica a TODOS los pods
+  podSelector: {}             # aplica a todos los pods del ns
   policyTypes: [Egress]
   egress:
   - to:
     - namespaceSelector:
         matchLabels:
-          network.openshift.io/policy-group: dns   # <- etiqueta correcta para DNS en OCP
+          network.openshift.io/policy-group: dns  # etiqueta oficial para DNS en OCP
     ports:
     - { protocol: UDP, port: 53 }
     - { protocol: TCP, port: 53 }
