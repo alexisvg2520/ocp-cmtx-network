@@ -8,4 +8,5 @@ ports:
   http: 8080
   mongo: 27017
 dns:
+  namespace: openshift-dns
   cidr: "172.30.0.10/32"   # ajusta si tu nameserver es otro
