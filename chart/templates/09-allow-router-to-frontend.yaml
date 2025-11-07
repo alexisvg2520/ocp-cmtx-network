@@ -2,11 +2,11 @@ apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: cmtx-np-allow-router-to-frontend
-  namespace: ecuaalejo2013-dev
+  namespace: {{ .Values.namespace }}
 spec:
   podSelector:
     matchLabels:
-      app.kubernetes.io/name: cmtx-web-frontend
+      app.kubernetes.io/name: {{ .Values.labels.frontend }}
   policyTypes: [Ingress]
   ingress:
   - from:
@@ -15,4 +15,4 @@ spec:
           network.openshift.io/policy-group: ingress
     ports:
     - protocol: TCP
-      port: 8080
+      port: {{ .Values.ports.http }}
