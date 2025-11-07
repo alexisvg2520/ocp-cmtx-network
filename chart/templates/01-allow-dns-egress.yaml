@@ -11,6 +11,9 @@ spec:
     - namespaceSelector:
         matchLabels:
           kubernetes.io/metadata.name: {{ .Values.dns.namespace | default "openshift-dns" }}
+    - namespaceSelector:
+        matchLabels:
+          network.openshift.io/policy-group: dns
     ports:
     - { protocol: UDP, port: 53 }
     - { protocol: TCP, port: 53 }
