@@ -10,9 +10,15 @@ spec:
   - to:
     - namespaceSelector:
         matchLabels:
-          network.openshift.io/policy-group: dns
-    - ipBlock:
-        cidr: {{ .Values.dns.cidr | default "172.30.0.10/32" }}
+          kubernetes.io/metadata.name: {{ .Values.dns.namespace | default "openshift-dns" }}
     ports:
     - { protocol: UDP, port: 53 }
     - { protocol: TCP, port: 53 }
+  {{- if .Values.dns.cidr }}
+  - to:
+    - ipBlock:
+        cidr: {{ .Values.dns.cidr }}
+    ports:
+    - { protocol: UDP, port: 53 }
+    - { protocol: TCP, port: 53 }
+  {{- end }}
